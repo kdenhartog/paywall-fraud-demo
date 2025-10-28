@@ -1,4 +1,4 @@
-# x402 Video Paywall Demo
+# x402 Paywall Fraud Demo
 
 This project demonstrates how a new security vector called "paywall fraud" will
 emerge from the creation of micropayments with [x402 payment protocol](https://www.x402.org/). The web app allows users
