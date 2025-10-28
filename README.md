@@ -28,13 +28,13 @@ This
 
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Rename `.env.local` to `.env` and add the following variables (remember to replace `WALLET_ADDRESS` with your actual wallet address you want to receive payments for)
 
    ```
-   WALLET_ADDRESS=your_ethereum_wallet_address
+   WALLET_ADDRESS=0x0000000000000000000000000000000000000000
    NODE_ENV=development
    PORT=4021
    ```
@@ -46,7 +46,7 @@ This
 
 5. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 6. Open your browser and navigate to `http://localhost:4021`
