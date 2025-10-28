@@ -20,9 +20,8 @@
       <strong>You just experienced a simulated "paywall fraud"
         attack.</strong>
       <br>
-      You paid USDC on Sepolia testnet to access premium content, but were
-      redirected to this warning page instead which doesn't contain the
-      content you were expecting.
+      You paid USDC on Sepolia testnet (it's not real money) to
+      access premium content, and did not receive the content you were expecting.
     </p>
 
     <h3>Why is this a problem?</h3>
@@ -30,26 +29,21 @@
       <strong>
         This is a problem because it will discourage people from trusting
         x402
-        micropayments or make client implemtnations only trust a limited
+        micropayments or make client implementations only trust a limited
         number of
         facilitators.
       </strong>
       <br><br>
-      Individual facilitators will need to implement their own fraud
-      prevention solutions to protect their users or risk being complicit
-      in
-      fraud. As facilitators compete to offer the most secure solutions,
-      the
-      most effective anti-fraud facilitators will gain dominant market
-      positions forming a natural centralization of the protocol. This
-      centralization will
-      allow a small number of facilitiators to capture the majority of
-      market share to either
-      capture revenue from the protocol via fees and or influence the
-      future of the
-      protocol to favor their own preferences. This centralization has
-      already
-      started to happen with the currently registered <a
+Individual facilitators will need to implement their own fraud prevention
+solutions to protect users from fraud. As facilitators compete to offer the
+most secure solutions, the most effective anti-fraud facilitators will gain
+dominant market positions, forming a natural centralization of the x402
+protocol. This centralization will grant a few facilitators the
+majority of market share. Over time, these select few facilitators will be
+able to determine the direction of the protocol and limit access for
+others. This centralization has already started to happen with the
+currently registered
+      <a
         href="https://www.x402scan.com/facilitators"
         target="_self">facilitators</a> forming a <a
         href="https://en.wikipedia.org/wiki/Pareto_principle"
@@ -59,8 +53,7 @@
 
     <h3>Contribute to the solution of Paywall Fraud</h3>
     <p>
-      <strong>The x402 payment protocol should be updated to address this
-        issue:</strong>
+      <strong>Preventing paywall fraud should be solved in a standardized way:</strong>
     </p>
     <a href="https://github.com/coinbase/x402/issues/508"
       class="cta-button">
@@ -72,40 +65,37 @@
     <h3>How did my browsing history end up onchain?</h3>
     <p>
       <strong>
-        all transactions are published onchain publicly by default
+        All transactions are published onchain publicly by default.
       </strong>
       <br><br>
-      This means your wallet address and payments to a registered recipient
-      can be tracked based
-      on the recipient's wallet address and correlated to the content you
-      were
-      willing to pay for. This would be viewable on the base sepolia explorer here:
+      Your wallet address and x402 payments to registered recipients can be
+      tracked. When you pay for content, your wallet address becomes linked to
+      that content through public transaction data visible on blockchain
+      explorers. For example, you can view all payments for this page on the
       <a
         href="https://sepolia.basescan.org/token/0x036cbd53842c5426634e7929541ec2318f3dcf7e?a=0x14fd5ea59d8f9cfdb173e25b4fc4d3dbb14692bf">
-        Base Sepolia Explorer
-      </a>. Each one of these transactions to the recipient address is
-      associated with that wallet address viewing the paywalled content and
-      conversely leaks how often  they visited the paywalled content.
+        Base Sepolia Explorer.
+      </a> 
     </p>
 
     <h3>Why is this a problem?</h3>
+    <strong>
+      Each transaction reveals which wallet viewed the page, when they viewed it, and how often they visited the page.
+    </strong>
+
     <p>
-      The transactions published on chain and connected to your wallet
-      address can be used for advertising purposes for the content you were
-      willing to pay for so
-      advertisers can build an economic profile of you. Alternatively, if
-      other
-      scammers determine that you visited this page and were willing to pay
-      for
-      this content, they could airdrop an NFT advertisement to your wallet
-      to
-      trick you into visiting more scam sites.
+      Onchain transactions linked to a wallet address can be used to build
+      economic profiles based on content the owner is willing to pay for. Now
+      everyone can see that edgy site you visited, not just Google.
+      Additionally, scammers can identify visitors to known scam sites as
+      potential targets and airdrop advertisement NFTs to their wallet to trick them
+      into visiting more scam sites. 
     </p>
 
     <h3>Contribute to the solution of Privacy by Default</h3>
     <p>
-      <strong>The x402 payment protocol should be updated to address this
-        issue:</strong>
+      <strong>We need to solve this problem by adding
+      privacy by default to the x402 payment protocol:</strong>
     </p>
     <a href="https://github.com/coinbase/x402/issues/406"
       class="cta-button">
@@ -123,13 +113,11 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
-      <p>
-        Disclaimer: This is a simulated paywall fraud attack and the payments 
-        are not real as this demo only works on Base Sepolia testnet.
-      </p>
     </div>
   </div>
 
-  <a href="/" class="cta-button secondary">Return to Homepage</a>
+  <div style="text-align: center;">
+    <a href="/" class="cta-button secondary">Return to Homepage</a>
+  </div>
 
 </body>
