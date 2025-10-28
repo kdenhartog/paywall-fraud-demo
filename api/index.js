@@ -5,7 +5,20 @@ import path from "path";
 import { log } from "../utils/log.js";
 import { contentAccessHandler } from "../handlers/contentAccessHandler.js";
 
+// Load environment variables from .env.local first, then .env
+dotenv.config({ path: ".env.local" });
 dotenv.config();
+
+// Validate required environment variables
+if (!process.env.WALLET_ADDRESS) {
+  // note because x402.org/facillitator is used, it won't accept paments to the
+  // burn address. If this occurs you'll see an error on the page that
+  // re-requests the payment twice and then shows a payment failure error.
+  process.env.WALLET_ADDRESS = "0x0000000000000000000000000000000000000000";
+  console.warn(
+    "WALLET_ADDRESS environment variable is not set. Using the default burn address."
+  );
+}
 
 // Create and configure the Express app
 const app = express();
@@ -22,11 +35,11 @@ app.use(express.json());
 // x402 payment middleware configuration
 app.use(
   paymentMiddleware(
-    process.env.WALLET_ADDRESS, // your receiving wallet address
+    process.env.WALLET_ADDRESS, // your receiving wallet address or the default burn address
     {
       // Protected endpoint for authentication
       "GET /authenticate": {
-        price: "$0.10", // Set your desired price
+        price: "$0.01", // Set your desired price
         network: network,
       },
     },
