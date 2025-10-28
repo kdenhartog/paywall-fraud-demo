@@ -22,8 +22,7 @@ This
 1. Clone this repository:
 
    ```bash
-   git clone git@github.com:quiknode-labs/qn-guide-examples.git
-   cd sample-dapps/coinbase-x402
+   git clone git@github.com:kdenhartog/paywall-fraud-demo.git
    ```
 
 2. Install dependencies:
@@ -61,7 +60,6 @@ This
 
 - To change the price of the video, modify the `price` parameter in `api/index.js`
 - To use a different video, update the video source in `public/video-content.html`
-- To deploy on Base mainnet, update the network configuration in `api/index.js` (you will need also need CDP API Keys and need to use a different Facilitator)
 
 
 ## Credit
