@@ -5,17 +5,12 @@ emerge from the creation of micropayments with [x402 payment protocol](https://w
 to pay a small amount of cryptocurrency (USDC) to access what they think is a
 paywalled video only to find out they've been scammed.
 
-## Features
+To read more about this and skip actually paying USDC on Base Sepolia, you can visit https://paywallfraud.com/paywalled-content
 
-This 
-- Paywalled endpoint for accessing premium video content
-- Client-side implementation for making payments
-- Base Sepolia testnet integration for easy testing
+The specific issues that need to be addressed are the following:
 
-## Prerequisites
-
-- Node.js (v22 or higher)
-- A EVM-compatible wallet with Base Sepolia USDC
+1. Transactions over x402 need privacy by default: https://github.com/coinbase/x402/issues/406
+2. Paywall fraud needs to be addressed: https://github.com/coinbase/x402/issues/508
 
 ## Getting Started
 
@@ -52,14 +47,9 @@ This
 
 ## How It Works
 
-1. The server uses the `x402-express` middleware to protect the `/authenticate` endpoint
-2. When a user tries to access the protected endpoint, they are required to make a payment
-3. After successful payment, the user is redirected to `/video-content`, where the premium video content is served
-
-## Customizing
-
-- To change the price of the video, modify the `price` parameter in `api/index.js`
-- To use a different video, update the video source in `public/video-content.html`
+1. When a user visits the site they're convince to make a purchase using x402 to buy access to content
+2. They then complete their payment using x402 (which doesn't have chargebacks or anyway to claim fraud)
+3. After successful payment, the user is redirected to https://paywallfraud.com/paywalled-content, where rather than getting the premium content they expect, they get a PSA about paywall fraud. In an actual attack, this page would just be blank or redirect you elsewhere.
 
 
 ## Credit
