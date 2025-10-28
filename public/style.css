@@ -1,11 +1,12 @@
 :root {
-  --primary-color: #3498db;
+  --primary-color: #667eea;
   --secondary-color: #2c3e50;
-  --accent-color: #1abc9c;
-  --light-gray: #f5f5f5;
+  --accent-color: #764ba2;
+  --light-gray: #f5f7fa;
   --dark-gray: #333;
-  --text-color: #222;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --text-color: #2d3748;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 15px 40px rgba(102, 126, 234, 0.25);
   --transition-speed: 0.3s;
 }
 
@@ -15,57 +16,191 @@
   box-sizing: border-box;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--light-gray);
-  padding: 20px;
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
-  padding: 20px;
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s infinite;
 }
 
 header h1 {
-  color: var(--secondary-color);
-  margin-bottom: 10px;
-  font-size: 2.2rem;
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 15px;
+  font-size: 3rem;
+  font-weight: 800;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  letter-spacing: -1px;
 }
 
 header p {
-  color: var(--dark-gray);
-  font-size: 1.1rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 a {
   color: var(--primary-color);
   text-decoration: none;
-  transition: color var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  font-weight: 600;
 }
 
 a:hover {
   color: var(--accent-color);
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+a:not(.cta-button)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transition: width var(--transition-speed) ease;
+}
+
+a:not(.cta-button):hover::after {
+  width: 100%;
 }
 
 .card {
-  background-color: white;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   box-shadow: var(--card-shadow);
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 40px;
+  margin-bottom: 30px;
+  transition: all var(--transition-speed) ease;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.8s;
 }
 
 .card h3 {
-  color: var(--secondary-color);
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--light-gray);
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--light-gray);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .collapsible-trigger {
@@ -97,18 +232,46 @@ a:hover {
 
 .cta-button {
   display: inline-block;
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
+  padding: 18px 40px;
+  border-radius: 50px;
   font-weight: bold;
   text-align: center;
-  margin: 15px 0;
+  margin: 20px 0;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
 }
 
 .cta-button:hover {
-  background-color: var(--accent-color);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
   text-decoration: none;
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(1.02);
 }
 
 pre {
@@ -250,23 +413,115 @@ body.warning-page a:hover {
 }
 
 body.warning-page .cta-button {
-  background-color: #00897b;
+  background: linear-gradient(135deg, #00897b, #00695c);
   color: white;
-  border: 2px solid #004d40;
+  padding: 18px 40px;
+  border-radius: 50px;
   font-weight: bold;
-  margin: 10px 5px;
+  text-align: center;
+  margin: 20px 5px;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 25px rgba(0, 137, 123, 0.4);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  animation: none;
+  display: inline-block;
+}
+
+body.warning-page .cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+body.warning-page .cta-button:hover::before {
+  left: 100%;
 }
 
 body.warning-page .cta-button:hover {
-  background-color: #00695c;
-  border-color: #00251a;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 137, 123, 0.5);
+  text-decoration: none;
+}
+
+body.warning-page .cta-button:active {
+  transform: translateY(-1px) scale(1.02);
 }
 
 body.warning-page .cta-button.secondary {
-  background-color: #1a1a1a;
-  border-color: #333;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
 }
 
 body.warning-page .cta-button.secondary:hover {
-  background-color: #000;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(44, 62, 80, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px;
+  }
+
+  header {
+    padding: 30px 20px;
+    margin-bottom: 30px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+
+  .card h3 {
+    font-size: 1.4rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  body.warning-page .cta-button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 15px 0;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
