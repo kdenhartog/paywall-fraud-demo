@@ -10,7 +10,13 @@
     "build": "echo 'No build step required'",
     "vercel-build": "echo 'No build step required'"
   },
-  "keywords": ["x402", "paywall", "fraud", "cryptocurrency", "blockchain"],
+  "keywords": [
+    "x402",
+    "paywall",
+    "fraud",
+    "cryptocurrency",
+    "blockchain"
+  ],
   "author": "",
   "license": "MIT",
   "description": "A proof of concept for paywall fraud with the x402 payment protocol",
@@ -24,7 +30,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
-    "vercel": "latest"
+    "vercel": "^41.0.2"
   },
   "engines": {
     "node": ">=18.0.0"
